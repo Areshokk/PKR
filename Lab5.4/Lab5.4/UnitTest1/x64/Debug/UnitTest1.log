@@ -1,0 +1,4 @@
+﻿  UnitTest1.cpp
+D:\Politeh\PKR\Lab5.4\Lab5.4\Lab5.4\Lab5.4.cpp(32,7): warning C4101: 'prizv': unreferenced local variable
+D:\Politeh\PKR\Lab5.4\Lab5.4\Lab5.4\Lab5.4.cpp(150,39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  UnitTest1.vcxproj -> D:\Politeh\PKR\Lab5.4\Lab5.4\x64\Debug\UnitTest1.dll

@@ -1,0 +1,6 @@
+﻿  Lab5.3.cpp
+D:\Politeh\PKR\Lab5.3\Lab5.3\Lab5.3\Lab5.3.cpp(272,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Politeh\PKR\Lab5.3\Lab5.3\Lab5.3\Lab5.3.cpp(304,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Politeh\PKR\Lab5.3\Lab5.3\Lab5.3\Lab5.3.cpp(368,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Politeh\PKR\Lab5.3\Lab5.3\Lab5.3\Lab5.3.cpp(412,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Lab5.3.vcxproj -> D:\Politeh\PKR\Lab5.3\Lab5.3\x64\Debug\Lab5.3.exe

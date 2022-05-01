@@ -1,0 +1,8 @@
+﻿  Lab3.1.cpp
+D:\Politeh\PKR\Lab3.1\Lab3.1\Lab3.1\Lab3.1.cpp(44,6): warning C4101: 'Math': unreferenced local variable
+D:\Politeh\PKR\Lab3.1\Lab3.1\Lab3.1\Lab3.1.cpp(42,13): warning C4101: 'spec': unreferenced local variable
+D:\Politeh\PKR\Lab3.1\Lab3.1\Lab3.1\Lab3.1.cpp(43,6): warning C4101: 'Physical': unreferenced local variable
+D:\Politeh\PKR\Lab3.1\Lab3.1\Lab3.1\Lab3.1.cpp(45,6): warning C4101: 'Informatik': unreferenced local variable
+D:\Politeh\PKR\Lab3.1\Lab3.1\Lab3.1\Lab3.1.cpp(41,11): warning C4101: 'kurs': unreferenced local variable
+D:\Politeh\PKR\Lab3.1\Lab3.1\Lab3.1\Lab3.1.cpp(126,26): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  Lab3.1.vcxproj -> D:\Politeh\PKR\Lab3.1\Lab3.1\x64\Debug\Lab3.1.exe

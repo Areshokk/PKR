@@ -1,0 +1,4 @@
+﻿  Lab4.1c.cpp
+D:\Politeh\PKR\Lab4.1c\Lab4.1c\Lab4.1c\Lab4.1c.cpp(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\Politeh\PKR\Lab4.1c\Lab4.1c\Lab4.1c\Lab4.1c.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  Lab4.1c.vcxproj -> D:\Politeh\PKR\Lab4.1c\Lab4.1c\x64\Debug\Lab4.1c.exe
