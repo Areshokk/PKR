@@ -1,0 +1,4 @@
+﻿  UnitTest1.cpp
+D:\Github\PKR\Lab5.2A\Lab5.2A\Lab5.2A\Lab5.2A.cpp(150,9): warning C4101: 'd': unreferenced local variable
+D:\Github\PKR\Lab5.2A\Lab5.2A\Lab5.2A\Lab5.2A.cpp(196): warning C4715: 'Higest': not all control paths return a value
+  UnitTest1.vcxproj -> D:\Github\PKR\Lab5.2A\Lab5.2A\x64\Debug\UnitTest1.dll

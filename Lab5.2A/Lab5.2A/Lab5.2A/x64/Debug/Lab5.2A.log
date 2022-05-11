@@ -1,0 +1,4 @@
+﻿  Lab5.2A.cpp
+D:\Github\PKR\Lab5.2A\Lab5.2A\Lab5.2A\Lab5.2A.cpp(150,9): warning C4101: 'd': unreferenced local variable
+D:\Github\PKR\Lab5.2A\Lab5.2A\Lab5.2A\Lab5.2A.cpp(196): warning C4715: 'LineSearch2': not all control paths return a value
+  Lab5.2A.vcxproj -> D:\Github\PKR\Lab5.2A\Lab5.2A\x64\Debug\Lab5.2A.exe
