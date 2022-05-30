@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <Windows.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -9,54 +9,7 @@ struct Elem
 	Elem* link;
 	Info info;
 };
-typedef int inform;
 
-struct Spusok
-{
-	Spusok* link1;
-	inform inf;
-};
-
-void Insert(Elem*& L, Info value);
-void Print(Elem* L);
-void Process(Spusok*& T, int N);
-
-
-int main()
-{
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-
-	Elem* L = NULL;
-
-	Spusok* first = NULL;
-	Spusok* last = NULL;
-
-	Info value, N;
-	Spusok* T = first;
-
-	T = first;
-
-	do
-	{
-		cout << "Ââåä³òü ê³ëüê³ñòü åëåìåíò³â ñïèñêó: "; cin >> N;
-	} while (N < 0);
-
-	for (int i = 0; i < N; i++)
-	{
-		cout << "Ââåä³òü äàí³: "; cin >> value;
-		Insert(L, value);
-	}
-
-	cout << "Åëåìåíòè ÷åðãè: "; Print(L); cout << endl;
-
-
-
-	Process(T, N);
-	cout << "Ðóçóëüòàò: "; Print(L);
-
-	return 0;
-}
 void Insert(Elem*& L, Info value)
 {
 	Elem* tmp = new Elem;
@@ -66,41 +19,86 @@ void Insert(Elem*& L, Info value)
 		Elem* T = L;
 		while (T->link != L)
 			T = T->link;
-
 		T->link = tmp;
 	}
 	else
+	{
 		L = tmp;
-
+	}
 	tmp->link = L;
 }
-void Print(Elem* L)
-{
-	if (L == NULL)
-		return;
 
+Info Remove(Elem*& L)
+{
+	Elem* T = L;
+	while (T->link != L) T = T->link;
+
+	Info value = L->info;
+	if (T != L)
+	{
+		Elem* tmp = L->link;
+		delete L;
+		L = tmp;
+		T->link = L;
+	}
+	else
+	{
+		delete L;
+		L = NULL;
+	}
+	return value;
+}
+
+int Count(Elem* L) {
+	if (L == NULL) return 0;
 	Elem* first = L;
-	cout << L->info << " ";
+	int k = 1;
+	while (L->link != first)
+	{
+		k++;
+		L = L->link;
+	}
+	return k;
+}
+
+void Print(Elem* L) {
+	if (L == NULL) return;
+	Elem* first = L;
+	cout << setw(4) << L->info;
 	while (L->link != first)
 	{
 		L = L->link;
-		cout << L->info << " ";
+		cout << setw(4) << L->info;
 	}
+	cout << endl;
 }
-void Process(Spusok*& T, int N)
+
+void del( Elem* L, Info x)
 {
-	inform inf;
-
-	cout << endl;
-	cout << "Âèâ³ä ³íôîðìàö³¿ ïðî ìîäèô³êîâàíèé åëåìåíò " << endl << endl;
-	while (T != NULL)
+	if (L == NULL)
+		return;
+	Elem* first = L;
+	
+	while (L->link != first)
 	{
-		inf = T->inf;
-
-		T->inf = inf + N;
-		cout << T->inf << "   ";
-		T = T->link1;
-
+		if (L->info == x)
+			Remove(L);
+		L = L->link;
 	}
-	cout << endl;
+
+}
+
+int main()
+{
+	Elem* L = NULL;
+	for (int i = 0; i < 15; i++)
+		Insert(L, i);
+	cout << Count(L) << endl;
+	Print(L);
+
+	int N;
+	cout << "Vvedit number: "; cin >> N;
+	del(L, N);
+	Print(L);
+	return 0;
 }

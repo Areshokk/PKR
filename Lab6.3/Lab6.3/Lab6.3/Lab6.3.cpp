@@ -1,141 +1,95 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <conio.h>
-#include <stdio.h>
-#include <string>
+#include <iomanip>
+
 using namespace std;
-struct elem
+
+typedef int Info;
+struct Elem
 {
-	string name;
-	struct elem* next;
-	struct elem* previous;
+    Elem* next,
+        * prev;
+    int info;
 };
-elem* head = NULL;
-elem* last = NULL;
-elem* current = NULL;
-elem* temp = NULL;
-elem* newList = NULL;
 
-void add_name(string s)
+void enqueue(Elem*& first, Elem*& last, Info value)
 {
-	if (head != NULL)
-	{
-		newList = new elem;
-		newList->name = s;
-		newList->next = NULL;
-		newList->previous = current;
-		current->next = newList;
-		last = newList;
-		current = newList;
-	}
-	else
-	{
-		newList = new elem;
-		newList->name = s;
-		head = newList;
-		newList->next = NULL;
-		newList->previous = NULL;
-		current = newList;
-		last = head;
-	}
+    Elem* tmp = new Elem;
+    tmp->info = value;
+    tmp->next = NULL;
+    if (last != NULL)
+        last->next = tmp;
+    tmp->prev = last;
+    last = tmp;
+    if (first == NULL)
+        first = tmp;
 }
 
-void delete_unit(string name)
+Info dequeue(Elem*& first, Elem*& last)
 {
-	newList = head;
-	while (newList) {
-		if (newList->name == name)
-		{
-			if (newList == head) {
-				head = head->next;
-				if (head)
-					head->previous = NULL;
-				else
-					last = NULL;
-				if (current == newList)
-					current = head;
-				delete newList;
-				break;
-			}
-			if (newList == last) {
-				last = last->previous;
-				if (last)
-					last->next = NULL;
-				if (current == newList)
-					current = last;
-				delete newList;
-				break;
-			}
-			newList->previous->next = newList->next;
-			newList->next->previous = newList->previous;
-			current = newList->previous;
-			delete newList;
-			break;
-		}
-		newList = newList->next;
-	}
+    Elem* tmp = first->next;
+    Info value = first->info;
+    delete first;
+    first = tmp;
+    if (first == NULL)
+        last = NULL;
+    else
+        first->prev = NULL;
+    return value;
 }
 
-void show_list(void)
+void Create(Elem*& first, Elem*& last)
 {
-	struct elem* info;
-	info = head;
-	while (info)
-	{
-		cout << info->name << " ";
-		info = info->next;
-	}
-	cout << "\n";
+    for (int i = 0; i <= 10; i++)
+    {
+        enqueue(first, last, i);
+    }
 }
 
-int main(void)
+void Delete(Elem*& first, Elem*& last)
 {
-	string enter_name;
-	int key = -1;
-	while (key)
-	{
-		cout << "1. Enter element of list\n";
-		cout << "2. Delete unit\n";
-		cout << "3. Show list\n";
-		cout << "0. Exit\n";
-		cin >> key;
-		switch (key)
-		{
-		case 1:
-		{
-			cout << "Enter element\n";
-			cin >> enter_name;
-			add_name(enter_name);
-			break;
-		}
-		case 2:
-		{
-			cout << "Enter unit for deleting\n";
-			cin >> enter_name;
-			delete_unit(enter_name);
-			_getch();
-			break;
-		}
-		case 3:
-		{
-			cout << "List from left to right\n";
-			show_list();
-			break;
-		}
-		case 0:
-		{
-			cout << "Bye\n";
-			_getch();
-			break;
-		}
-		default:
-		{
-			cout << "Error\n";
-			_getch();
-			break;
-		}
-		if (key == 0) break;
-		}
-	}
-	return 0;
+    while (first != NULL)
+        dequeue(first, last);
+}
+
+void Print(Elem*& first, Elem*& last)
+{
+    Elem* tmp = first;
+    while (tmp != NULL)
+    {
+        cout << tmp->info << " ";
+        tmp = tmp->next;
+    }
+    cout << endl;
+}
+
+int Count(Elem*& first, int q)
+{
+    Elem* tmp = first;
+    int result = 0;
+    while (tmp != NULL)
+    {
+        if (tmp->info == q)
+            result++;
+        tmp = tmp->next;
+    }
+    return result;
+}
+
+int main()
+{
+    Elem* first = NULL,
+        * last = NULL;
+
+    Create(first, last);
+    Print(first, last);
+
+    int q;
+    cout << "Vvedit znach : ";
+    cin >> q;
+    cout << " Count : " << Count(first, q) << endl;
+
+    Delete(first, last);
+
+    //cout << " Count after del = " << Count(first, q) << endl;
+    return 0;
 }

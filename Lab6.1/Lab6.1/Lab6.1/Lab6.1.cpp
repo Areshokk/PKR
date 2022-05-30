@@ -22,11 +22,12 @@ int main()
 	p->link2->link1->link1 = p->link2;; // 9
 	p->link1 = new Elem; // 3
 	p->link1->info = 4; // 11
-	p->link1->link2 = p->link2; // 12
-	p->link1->link1 = p->link2->link1; // 13
-	delete p->link2; // 14
+	p->link1->link1 = p->link2; // 12
+	p->link1->link2 = p->link2->link1; // 13
+
+	delete p->link1; // 14
 	delete p->link2->link1; // 15
-	delete p->link1; // 16
+	delete p->link2; // 16
 	delete p; // 17
 	return 0;
 }

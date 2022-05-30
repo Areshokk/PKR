@@ -13,7 +13,7 @@ namespace UnitTest1A
 		TEST_METHOD(TestMethod1)
 		{
 			char filename[15] = "f.dat";
-			int t = Count(filename);
+			int t = LineSearch(filename);
 			Assert::AreEqual(t, 0);
 		}
 	};

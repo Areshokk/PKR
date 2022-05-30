@@ -1,0 +1,2 @@
+﻿  UnitTest1.cpp
+D:\Github\PKR\Lab6.1\Lab6.1\UnitTest1\UnitTest1.cpp(16): error C4700: uninitialized local variable 'p' used
