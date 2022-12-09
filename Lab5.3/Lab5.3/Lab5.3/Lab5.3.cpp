@@ -16,7 +16,7 @@ struct Student
 	char surname[64];
 	unsigned course;
 	Specialty specialty;
-	double SERrate;
+	double average;
 	unsigned physics;
 	unsigned maths;
 	union
@@ -109,7 +109,7 @@ int main()
 			cin >> avg;
 			cout << " Оцінка з третього предмету ";
 			cin >> trate;
-		
+
 			found = BinSearch(filename, surname, avg, trate);
 
 			//cout <<"bin " << found << endl;
@@ -164,25 +164,25 @@ void CreateBIN(const char* filename)
 		switch (student.specialty)
 		{
 		case KOMP_NAYK:
-			
+
 			cout << " Оцінка з програмування: ";
 			cin >> student.programming;
-			student.SERrate = ((student.physics + student.maths + student.programming) / 3.0);
-			cout << " Середній бал = " << student.SERrate;
+			student.average = ((student.physics + student.maths + student.programming) / 3.0);
+			cout << " Середній бал = " << student.average;
 			break;
 		case INFORMATUKA:
 			cout << " Оцінка з чисельних методів: ";
 			cin >> student.ch_methods;
-			student.SERrate = ((student.physics + student.maths + student.ch_methods) / 3.0);
-			cout << " Середній бал = " << student.SERrate;
+			student.average = ((student.physics + student.maths + student.ch_methods) / 3.0);
+			cout << " Середній бал = " << student.average;
 			break;
 		case MATEM_EKONOM:
 		case FIZ_MATEM:
 		case TRUD_NAVCH:
 			cout << " Оцінка з педагогіки: ";
 			cin >> student.pedagogy;
-			student.SERrate = ((student.physics + student.maths + student.pedagogy) / 3.0);
-			cout << " Середній бал = " << student.SERrate;
+			student.average = ((student.physics + student.maths + student.pedagogy) / 3.0);
+			cout << " Середній бал = " << student.average;
 			break;
 		}
 		cout << endl;
@@ -265,7 +265,7 @@ void fChange(fstream& f, const int i, const int j)
 }
 
 void SortBIN(const char* filename)
-{   
+{
 	fstream f(filename, ios::binary | ios::in | ios::out);
 
 	f.seekg(0, ios::end);
@@ -278,12 +278,12 @@ void SortBIN(const char* filename)
 			Student a = fRead(f, i1);
 			Student b = fRead(f, i1 + 1);
 
-			if ((a.SERrate < b.SERrate)
+			if ((a.average > b.average)
 				||
-				(a.SERrate == b.SERrate &&
-					a.programming < b.programming)
+				(a.average == b.average &&
+					a.programming > b.programming)
 				||
-				(a.SERrate == b.SERrate &&
+				(a.average == b.average &&
 					a.programming == b.programming &&
 					strcmp(a.surname, b.surname) == -1))
 			{
@@ -318,24 +318,25 @@ void IndexSortBIN(const char* filename, const char* newfile)
 			g.read((char*)&y, sizeof(int));
 			Student a = fRead(f, x);
 			Student b = fRead(f, y);
-			if ((a.SERrate < b.SERrate)
+			if ((a.average > b.average)
 				||
-				(a.SERrate == b.SERrate &&
-					a.programming < b.programming)
+				(a.average == b.average &&
+					a.programming > b.programming)
 				||
-				(a.SERrate == b.SERrate &&
+				(a.average == b.average &&
 					a.programming == b.programming &&
-					strcmp(a.surname , b.surname) == -1 ))
+					strcmp(a.surname, b.surname) == -1))
 			{
-				int  i2;
+				int tmp1;
+				int tmp2;
 				g.seekg(i1 * (long)sizeof(int));
-				g.read((char*)&i1, sizeof(int));
+				g.read((char*)&tmp1, sizeof(int));
 				g.seekg((i1 + 1) * (long)sizeof(int));
-				g.read((char*)&i2, sizeof(int));
+				g.read((char*)&tmp2, sizeof(int));
 				g.seekg(i1 * (long)sizeof(int));
-				g.write((char*)&i2, sizeof(int));
+				g.write((char*)&tmp2, sizeof(int));
 				g.seekg((i1 + 1) * (long)sizeof(int));
-				g.write((char*)&i1, sizeof(int));
+				g.write((char*)&tmp1, sizeof(int));
 			}
 		}
 	}
@@ -416,12 +417,12 @@ int BinSearch(const char* filename, const char* surname, const double avg, const
 		m = (L + R) / 2;
 		Student a = fRead(f, m);
 
-		if (strcmp(a.surname, surname) == 0 && a.SERrate == avg && a.programming == trate) {
+		if (a.average == avg && a.programming == trate && strcmp(a.surname, surname) == 0) {
 			return m;
 		}
-		else if ((a.SERrate < avg) ||
-			(a.SERrate == avg && a.programming < trate) ||
-			(a.SERrate == avg && a.programming == trate && strcmp(a.surname, surname) == -1))
+		else if ((a.average > avg) ||
+			(a.average == avg && a.programming > trate) ||
+			(a.average == avg && a.programming == trate && strcmp(a.surname, surname) == -1))
 		{
 			R = m - 1;
 		}
@@ -432,4 +433,3 @@ int BinSearch(const char* filename, const char* surname, const double avg, const
 
 	return -1;
 }
- 

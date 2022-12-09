@@ -1,5 +1,5 @@
 ﻿  Lab4.4.cpp
-D:\Politeh\PKR\Lab4.4\Lab4.4\Lab4.4\Lab4.4.cpp(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
-D:\Politeh\PKR\Lab4.4\Lab4.4\Lab4.4\Lab4.4.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
-D:\Politeh\PKR\Lab4.4\Lab4.4\Lab4.4\Lab4.4.cpp(39,7): warning C4101: 'ch': unreferenced local variable
-  Lab4.4.vcxproj -> D:\Politeh\PKR\Lab4.4\Lab4.4\x64\Debug\Lab4.4.exe
+D:\Github\PKR\Lab4.4\Lab4.4\Lab4.4\Lab4.4.cpp(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\Github\PKR\Lab4.4\Lab4.4\Lab4.4\Lab4.4.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\Github\PKR\Lab4.4\Lab4.4\Lab4.4\Lab4.4.cpp(39,7): warning C4101: 'ch': unreferenced local variable
+  Lab4.4.vcxproj -> D:\Github\PKR\Lab4.4\Lab4.4\x64\Debug\Lab4.4.exe

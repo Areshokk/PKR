@@ -1,19 +1,4 @@
-﻿/*
-Варіант 16.
-Описати структуру з іменем Zodiac, що містить наступні поля :
- прізвище, ім’я;
- знак Зодіаку;
- день народження(масив з трьох чисел).
-
-Написати програму, що виконує наступні дії :
- введення даних з клавіатури в масив, що складається з елементів типу Zodiас;
- впорядкування масиву структур за прізвищами(в алфавітному порядку).
- вивід на екран інформації про людей, що народилися під знаком, найменування
-якого введене з клавіатури; якщо таких немає, вивести на екран відповідне
-повідомлення.
-*/
-
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <string>
@@ -32,7 +17,7 @@ struct Zodiac
 void Create(Zodiac* S, const int N);
 void Print(Zodiac* S, const int N);
 void Sort(Zodiac* S, const int N);
-int Search(Zodiac* S, const int N, const string);
+int Search(Zodiac* S, const int N, const string f_zod);
 void SaveToFile(Zodiac* p, const int N, const char* filename);
 void LoadFromFile(Zodiac*& p, int& N, const char* filename);
 
@@ -57,7 +42,7 @@ int main()
         cout << "Виберіть дію:" << endl;
         cout << "1 - введення даних з клавіатури" << endl;
         cout << "2 - вивід даних на екран" << endl;
-        cout << "3 - сортування за днем народження" << endl;
+        cout << "3 - сортування за прізвищем" << endl;
         cout << "4 - інформація про людину" << endl;
         cout << "5 - запис у файл" << endl;
         cout << "6 - зчитування з файлу" << endl;
@@ -77,7 +62,7 @@ int main()
             Print(S, N);
             break;
         case 4:
-            cout << "Введіть прізвище: " << endl;
+            cout << "Введіть знак зодіаку: " << endl;
             cin.get();
             cin.sync();
             getline(cin, f_zod); cout << endl;
@@ -92,13 +77,13 @@ int main()
             break;
         case 6:
             cin.get();
-            cin.sync(); 
+            cin.sync();
 
             cout << "Введіть ім'я файлу: "; cin.getline(filename, 99);
             LoadFromFile(S, N, filename);
             break;
         }
-        
+
 
         if (MenuItem == 0) break;
     }
@@ -115,7 +100,7 @@ void Create(Zodiac* S, const int N)
         cout << "Особа: " << i + 1 << endl;
         cin.get();
         cin.sync();
-        cout << "Прізвище: "; getline(cin, S[i].surname); 
+        cout << "Прізвище: "; getline(cin, S[i].surname);
         cout << "Імя: "; getline(cin, S[i].name);
         cout << "Знак зодіаку: "; getline(cin, S[i].zodiac_sign);
 
@@ -155,47 +140,34 @@ void Print(Zodiac* S, const int N)
 }
 
 void Sort(Zodiac* S, int N) {
-    Zodiac temp;
-   
+    Zodiac tmp;
     for (int i = 0; i < N; i++)
     {
-        for (int j = 0; j < N - i - 1; j++)
-        {
-            if ((S[j].date[2] > S[j + 1].date[2])
-                ||
-                (S[j].date[2] == S[j + 1].date[2])
-                &&
-                (S[j].date[1] > S[j + 1].date[1])
-                ||
-                (S[j].date[2] == S[j + 1].date[2])
-                &&
-                (S[j].date[1] == S[j + 1].date[1])
-                &&
-                (S[j].date[0] > S[j + 1].date[0]))
-            {
-                temp = S[j];
-                S[j] = S[j + 1];
-                S[j + 1] = temp;
-            }
-
-        }
+        for (int i0 = 0; i0 < N - 1; i0++) // метод "бульбашки"
+            for (int i1 = 0; i1 < N - i0 - 1; i1++)
+                if ((S[i1].surname > S[i1 + 1].surname))
+                {
+                    tmp = S[i1];
+                    S[i1] = S[i1 + 1];
+                    S[i1 + 1] = tmp;
+                }
     }
 }
 
 
 
 
-int Search(Zodiac* S, const int N, const string f_prizv)
+int Search(Zodiac* S, const int N, const string f_zod)
 {
     string zod;
     int flag = 0;
     cout << "=========================================================================================" << endl;
     cout << "|  №  |  Прізвище  | Імя | Знак зодіаку  |  День народження  |  Місяць  |  Рік          |" << endl;
     for (int i = 0; i < N; i++) {
-        if (S[i].surname == f_prizv)
+        if (S[i].zodiac_sign == f_zod)
         {
             flag = 1;
-           
+
             cout << "-----------------------------------------------------------------------------------------" << endl;
             cout << "|" << setw(3) << i + 1 << setw(3);
             cout << "|" << setw(4) << S[i].surname << setw(8);
@@ -204,7 +176,7 @@ int Search(Zodiac* S, const int N, const string f_prizv)
             cout << "|" << setw(6) << S[i].date[0] << setw(12);
             cout << "|" << setw(6) << S[i].date[1] << setw(6);
             cout << "|" << setw(10) << S[i].date[2] << setw(6) << "|" << endl;
-            
+
         }
     }
     cout << "=========================================================================================" << endl << endl;
@@ -235,6 +207,6 @@ void LoadFromFile(Zodiac*& p, int& N, const char* filename)
     for (int i = 0; i < N; i++)
     {
         fin.read((char*)&p[i], sizeof(Zodiac)); // прочитали елементи масиву
-    }                                           
+    }
     fin.close(); // закрили файл
 }

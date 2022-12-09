@@ -1,0 +1,1 @@
+CMakeLists.txt not found in D:\Github\PKR\Lab6.9 Select CMakeLists.txt

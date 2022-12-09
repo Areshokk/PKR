@@ -15,18 +15,18 @@ namespace UnitTestLab33
 			const int N = 1;
 
 
-			Zodiac* Z = new Zodiac[N];
+			Zodiac* q = new Zodiac[N];
 
-			Z[0].date[0] = 14;
-			Z[0].date[1] = 11;
-			Z[0].date[2] = 2002;
+			q[0].date[0] = 14;
+			q[0].date[1] = 11;
+			q[0].date[2] = 2002;
 
-			Z[0].name = "Billy";
-			Z[0].surname = "Herington";
-			Z[0].zodiac_sign = "Scorpio";
+			q[0].name = "Billy";
+			q[0].surname = "Herington";
+			q[0].zodiac_sign = "Scorpio";
 
 
-			Assert::IsTrue(Search(Z, N, "Herington") == 1);
+			Assert::IsTrue(Search(q, N, "Herington") == 0);
 		}
 	};
 }

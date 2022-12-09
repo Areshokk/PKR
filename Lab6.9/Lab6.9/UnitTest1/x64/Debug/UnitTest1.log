@@ -1,3 +1,4 @@
 ﻿  UnitTest1.cpp
+D:\Github\PKR\Lab6.9\Lab6.9\Lab6.9\Lab6.9.cpp(30,7): warning C4101: 'ch': unreferenced local variable
      Creating library D:\Github\PKR\Lab6.9\Lab6.9\x64\Debug\UnitTest1.lib and object D:\Github\PKR\Lab6.9\Lab6.9\x64\Debug\UnitTest1.exp
   UnitTest1.vcxproj -> D:\Github\PKR\Lab6.9\Lab6.9\x64\Debug\UnitTest1.dll

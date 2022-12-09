@@ -1,0 +1,3 @@
+D:/Github/PKR/Lab6.9/cmake-build-debug/CMakeFiles/Lab6_9.dir
+D:/Github/PKR/Lab6.9/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Github/PKR/Lab6.9/cmake-build-debug/CMakeFiles/rebuild_cache.dir
