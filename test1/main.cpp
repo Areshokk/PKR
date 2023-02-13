@@ -326,22 +326,30 @@ void GammaDecoding(string &input, string &gamma, string &result) {
 }
 
 int main() {
+//
+//    string str1, gamma, rez;
+//    string str1_v, gamma_v, rez_v;
+//    cout << "Vvedit povidomlenya: ";
+//    cin >> str1;
+//    cout << "Gamma: ";
+//    cin >> gamma;
+//
+//    GammaCoding(str1, gamma, rez);
+//    cout << "Encrypt message: ";
+//    cout << rez << endl;
+//
+//    GammaDecoding(rez, gamma, str1);
+//    cout << "Checking: ";
+//    cout << str1 << endl;
+//
+//    system("pause");
+//    return 0;
 
-    string str1, gamma, rez;
-    string str1_v, gamma_v, rez_v;
-    cout << "Vvedit povidomlenya: ";
-    cin >> str1;
-    cout << "Gamma: ";
-    cin >> gamma;
+for(int i = 0; i < 13;i=i+2){
+    if((i == 6)||(i==10))
+        continue;
+    printf("%d,",i);
+    }
+return 0;
 
-    GammaCoding(str1, gamma, rez);
-    cout << "Encrypt message: ";
-    cout << rez << endl;
-
-    GammaDecoding(rez, gamma, str1);
-    cout << "Checking: ";
-    cout << str1 << endl;
-
-    system("pause");
-    return 0;
 }
